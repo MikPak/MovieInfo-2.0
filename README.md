@@ -15,5 +15,7 @@ TODO:
 - Store fetched data to database
 
 Author: Mikko Pakkanen
+
 Website: http://mikkopakkanen.com
+
 Project started: 20.3.2016

@@ -36,7 +36,7 @@ namespace MovieInfo
             fileMenuItem.Header = "_File";
             mainMenu.Items.Add(fileMenuItem);
 
-            // Make the File menu's items.
+            // Make the File menu items.
             System.Windows.Controls.MenuItem openMenuItem = new System.Windows.Controls.MenuItem();
             fileMenuItem.Items.Add(openMenuItem);
             openMenuItem.Header = "_Select Folder";
@@ -47,7 +47,7 @@ namespace MovieInfo
 
             System.Windows.Controls.MenuItem exitMenuItem = new System.Windows.Controls.MenuItem();
             fileMenuItem.Items.Add(exitMenuItem);
-            exitMenuItem.Header = "E_xit";
+            exitMenuItem.Header = "_Exit";
             exitMenuItem.Click += exitMenuItem_Click;
             System.Windows.Controls.ToolTip exitToolTip = new System.Windows.Controls.ToolTip();
             exitMenuItem.ToolTip = exitToolTip;
@@ -67,7 +67,7 @@ namespace MovieInfo
             this.folderBrowserDialog1.ShowNewFolderButton = false;
 
             // Default to the My Documents folder.
-            this.folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Personal;
+            this.folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
 
             // Display the openFile dialog.
             DialogResult result = folderBrowserDialog1.ShowDialog();

@@ -6,10 +6,16 @@ namespace MovieInfo
 {
     /*
     *   MovieInfo - Simple movie library tool
-    *   GitHub: https://github.com/MikPak/
-    *   Project Started: 20.3.2016
-    *   Author: Mikko Pakkanen
-    *   Website: http://mikkopakkanen.com
+    *       - Searches media files from user specified path
+    *       - Parses file names
+    *       - Searches for data from The Open Movie Database (omdbapi.com)
+    *       - Parses XML-response and views info in graphical user interface
+    *       - Keeps record of data in local MySQL-database
+    *
+    *       GitHub: https://github.com/MikPak/MovieInfo-2.0
+    *       Project Started: 20.3.2016
+    *       Author: Mikko Pakkanen
+    *       Website: http://mikkopakkanen.com
     */
     public partial class MainWindow : Window
     {
@@ -66,7 +72,7 @@ namespace MovieInfo
             // Do not allow the user to create new files via the FolderBrowserDialog.
             this.folderBrowserDialog1.ShowNewFolderButton = false;
 
-            // Default to the My Documents folder.
+            // Default to the Desktop folder.
             this.folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
 
             // Display the openFile dialog.
@@ -81,6 +87,7 @@ namespace MovieInfo
                     openFileName = folderBrowserDialog1.SelectedPath;
                     fileOpened = true;
                     MovieList ml = new MovieList(openFileName, movieListBox);
+                    MovieData md = new MovieData(ml.movies);
                 }
                 catch (Exception exp)
                 {
@@ -100,6 +107,11 @@ namespace MovieInfo
         private void exitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void movieListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            System.Console.WriteLine("asd");
         }
     }
 }

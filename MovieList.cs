@@ -1,61 +1,86 @@
-﻿// The following example displays an application that provides the ability to 
-// open rich text files (rtf) into the RichTextBox. The example demonstrates 
-// using the FolderBrowserDialog to set the default directory for opening files.
-// The OpenFileDialog class is used to open the file.
-using System;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
-public class MovieList : System.Windows.Forms.ListBox
+namespace MovieInfo
 {
-
-    // Initialize ListBox with files from user defined path
-    public MovieList(string path, System.Windows.Controls.ListBox listbox)
-    {
-        List<string> items = DirSearch(path);
-        List<string> filenames = new List<string>();
-        foreach (string item in items)
-        {
-            string filename = Path.GetFileNameWithoutExtension(item);
-            var sb = new StringBuilder();
-            foreach (char c in filename)
-            {
-                if (!char.IsPunctuation(c))
-                    sb.Append(c);
-                else
-                    sb.Append(" ");
-            }
-            //System.Console.WriteLine(sb);
-            filenames.Add(sb.ToString());
-        }
-        listbox.ItemsSource = filenames;
-    }
-
-    /* 
-    * DirSearch(string sDir)
-    * Checks given path for files that have particular extension
-    * Found files are added to List<string> and returned
+    /*
+    *   Class: MovieList
+    *       Constructors:
+    *           public MovieList(string path, System.Windows.Controls.ListBox listbox)
+    *               - Initializes ListBox with parsed names of media files found from a given path
+    *       Functions:
+    *           private List<string> DirSearch(string sDir)
+    *               - Returns a list of found files that matches given file extension.
     */
-    private List<string> DirSearch(string sDir)
-    {
-        List<string> mediaExtensions = new List<string> { ".avi", ".mp4" };
-        List<string> filesFound = new List<string>();
-        foreach (string d in Directory.GetDirectories(sDir))
-        {
-            foreach (string f in Directory.GetFiles(d, "*.*"))
-            {
-                if (mediaExtensions.Contains(Path.GetExtension(f).ToLower()))
-                {
-                    filesFound.Add(f);
-                    //System.Console.WriteLine(f);
-                }
-            }
-            DirSearch(d);
-        }
-        return filesFound;
-    }
 
+    public class MovieList : System.Windows.Forms.ListBox
+    {
+        private List<string> _filenames = new List<string>();
+
+        #region properties
+        public List<String> movies
+        {
+            get { return _filenames; }
+        }
+        #endregion
+
+        #region constructors
+        // Initialize ListBox with files from user defined path
+        public MovieList(string path, System.Windows.Controls.ListBox listbox)
+        {
+            List<string> items = DirSearch(path);
+
+            foreach (string item in items)
+            {
+                string filename = Path.GetFileNameWithoutExtension(item);
+                var sb = new StringBuilder();
+
+                // Parse filename, punctuations will be replaced with whitespace
+                foreach (char c in filename)
+                {
+                    if (!char.IsPunctuation(c))
+                        sb.Append(c);
+                    else
+                        sb.Append(" ");
+                }
+
+                //System.Console.WriteLine(sb);
+                _filenames.Add(sb.ToString());
+            }
+            listbox.ItemsSource = _filenames;
+        }
+        #endregion
+
+        #region methods
+        /* 
+        * DirSearch(string sDir)
+        * Checks given path for files that have particular extension
+        * Found files are added to List<string> and returned
+        */
+        private List<string> DirSearch(string sDir)
+        {
+            List<string> mediaExtensions = new List<string> { ".avi", ".mp4", ".iso", ".img" };
+            List<string> filesFound = new List<string>();
+
+            // For every sub directory..
+            foreach (string d in Directory.GetDirectories(sDir))
+            {
+                // For every file in directory..
+                foreach (string f in Directory.GetFiles(d, "*.*"))
+                {
+                    // If file extension is..
+                    if (mediaExtensions.Contains(Path.GetExtension(f).ToLower()))
+                    {
+                        filesFound.Add(f);
+                        //System.Console.WriteLine(f);
+                    }
+                }
+                DirSearch(d);
+            }
+            return filesFound;
+        }
+        #endregion
+    }
 }

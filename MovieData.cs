@@ -13,7 +13,8 @@ namespace MovieInfo
     *           public MovieData(List<string> filenames)
     *               - Makes HTTP-requests to OMDB, parameter should contain List of parsed movie names
     *               - Initializes default view when starting the app.
-    *               - Properties are matching JSON-response
+    *               - Properties of objects are matching data of JSON-response
+    *               - Populates public List<MovieData> Movies with MovieData-objects that are serialized from JSON-response
     *       Functions:
     *           ---
     *               ---
@@ -41,8 +42,9 @@ namespace MovieInfo
         public string imdbID { get; set; }
         public string Type { get; set; }
         public string Response { get; set; }
-        #endregion
 
+        public List<MovieData> Movies = new List<MovieData>();
+        #endregion
         #region constructors
         /* 
         * public MovieData(List<string> filenames)
@@ -50,7 +52,7 @@ namespace MovieInfo
         * - Initializes default view when starting the app.
         * - Converts JSON-response to .NET-object (http://www.newtonsoft.com/json/help/html/SerializingJSON.htm)
         */
-        public MovieData(List<string> filenames)
+        public MovieData(List<string> filenames, System.Windows.Controls.ListBox listbox)
         {
             string url = "http://www.omdbapi.com/?t="; // See www.omdbapi.com/#parameters for full variable definition list
             foreach (string movie in filenames)
@@ -65,16 +67,24 @@ namespace MovieInfo
                 
                 using (var response = webRequest.GetResponse())
                 {
-                    //Console.WriteLine(((HttpWebResponse)response).StatusDescription); // Display HTTP-status returned by server.
                     Stream dataStream = response.GetResponseStream(); // Get the stream containing content returned by the server.
                     StreamReader reader = new StreamReader(dataStream); // Open the stream using a StreamReader for easy access.
                     string responseFromServer = reader.ReadToEnd(); // Read the content.
-                    //Console.WriteLine(responseFromServer); // Display the content.
-                    MovieData mv = new MovieData();
-                    mv = JsonConvert.DeserializeObject<MovieData>(responseFromServer);
-                    //Console.WriteLine(mv.Title);
+                    string errorStr = @"{""Response"":""False"",""Error"":""Movie not found!""}";
+
+                    Console.WriteLine(((HttpWebResponse)response).StatusDescription); // Display HTTP-status returned by server.
+                    //Console.WriteLine(errorStr);
+
+                    // If movie found, serialize it and add to property.
+                    if (!responseFromServer.Equals(errorStr)) {
+                        MovieData mv = new MovieData();
+                        Console.WriteLine(responseFromServer); // Display the content.
+                        mv = JsonConvert.DeserializeObject<MovieData>(responseFromServer);
+                        Movies.Add(mv);
+                    }
                 }
             }
+            listbox.ItemsSource = this.Movies; // Bind Movies-property as ItemsSource for our ListBox
         }
 
         public MovieData()

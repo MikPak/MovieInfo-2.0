@@ -28,7 +28,7 @@ namespace MovieInfo
 
         #region constructors
         // Initialize ListBox with files from user defined path
-        public MovieList(string path, System.Windows.Controls.ListBox listbox)
+        public MovieList(string path)
         {
             List<string> items = DirSearch(path);
 
@@ -49,7 +49,6 @@ namespace MovieInfo
                 //System.Console.WriteLine(sb);
                 _filenames.Add(sb.ToString());
             }
-            listbox.ItemsSource = _filenames;
         }
         #endregion
 
@@ -67,6 +66,14 @@ namespace MovieInfo
             // For every sub directory..
             foreach (string d in Directory.GetDirectories(sDir))
             {
+                foreach(string g in Directory.GetFiles(sDir, "*.*"))
+                {
+                    // If file extension is..
+                    if (mediaExtensions.Contains(Path.GetExtension(g).ToLower()))
+                    {
+                        filesFound.Add(g);
+                    }
+                } 
                 // For every file in directory..
                 foreach (string f in Directory.GetFiles(d, "*.*"))
                 {

@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MovieInfo"
         mc:Ignorable="d"
-        Title="MovieInfo - Simple movie library tool" Height="525" Width="625">
+        Title="MovieInfo - Simple movie library tool" MinHeight="445" MinWidth="785" MaxWidth="785" MaxHeight="445">
     <Grid x:Name="MovieInfoGrid">
-        <ListBox x:Name="movieListBox" SelectionChanged="movieListBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Stretch" Width="245"/>
-        <Label x:Name="movieNameLabel" Content="Movie Title:" HorizontalAlignment="Left" Height="33" Margin="245,20,0,0" VerticalAlignment="Top" Width="358"/>
+        <ListBox x:Name="movieListBox" DataContext="{Binding}" DisplayMemberPath="Title" SelectionChanged="movieListBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Stretch" Width="245"/>
+        <Label x:Name="movieNameLabel" Content="" HorizontalAlignment="Left" Height="40" Margin="261,22,0,0" VerticalAlignment="Top" Width="241" FontSize="21.333" FontFamily="Segoe UI Semilight"/>
+        <Label x:Name="movieReleasedLabel" Content="" HorizontalAlignment="Left" Height="36" Margin="261,57,0,0" VerticalAlignment="Top" Width="241" FontSize="16" FontFamily="Segoe UI Semilight" RenderTransformOrigin="0.505,0.593"/>
+        <Label x:Name="movieGenreLabel" Content="" HorizontalAlignment="Left" Height="36" Margin="261,80,0,0" VerticalAlignment="Top" Width="241" FontSize="16" FontFamily="Segoe UI Semilight" RenderTransformOrigin="0.505,0.593"/>
+        <TextBlock x:Name="MoviePlotLabel" HorizontalAlignment="Left" Height="auto" Margin="266,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241"/>
+        <TextBlock x:Name="movieDirectorLabel" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="261,230,0,0" VerticalAlignment="Top" Width="241"/>
+        <TextBlock x:Name="movieWritersLabel" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="261,255,0,0" VerticalAlignment="Top" Width="241"/>
+        <TextBlock x:Name="movieStarsLabel" HorizontalAlignment="Left" Margin="261,320,0,0" VerticalAlignment="Top" Width="241"/>
+        <Image x:Name="moviePoster" HorizontalAlignment="Right" Width="auto" Height="auto" Margin="507,22,-15.6,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

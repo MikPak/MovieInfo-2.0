@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Net;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 
 namespace MovieInfo
 {
@@ -23,12 +26,19 @@ namespace MovieInfo
         private bool fileOpened = false;
         private string openFileName;
 
+        #region properties
+        private MovieData Data { get; set; }
+        #endregion
+
+        #region constructors
         public MainWindow()
         {
             InitializeComponent();
             AddMainMenu();
         }
+        #endregion
 
+        #region methods
         private void AddMainMenu()
         {
             // Make the main menu.
@@ -36,12 +46,10 @@ namespace MovieInfo
             MovieInfoGrid.Children.Add(mainMenu);
             mainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
             mainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Top;
-
             // Make the File menu.
             System.Windows.Controls.MenuItem fileMenuItem = new System.Windows.Controls.MenuItem();
             fileMenuItem.Header = "_File";
             mainMenu.Items.Add(fileMenuItem);
-
             // Make the File menu items.
             System.Windows.Controls.MenuItem openMenuItem = new System.Windows.Controls.MenuItem();
             fileMenuItem.Items.Add(openMenuItem);
@@ -64,30 +72,30 @@ namespace MovieInfo
         {
             // Create instance of FolderBrowserDialog
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-
-            // Set the help text description for the FolderBrowserDialog.
+            // Set the help text description for the FolderBrowserDialog
             this.folderBrowserDialog1.Description =
                 "Select directory containing movies";
-
-            // Do not allow the user to create new files via the FolderBrowserDialog.
+            // Do not allow the user to create new files via the FolderBrowserDialog
             this.folderBrowserDialog1.ShowNewFolderButton = false;
-
-            // Default to the Desktop folder.
+            // Default to the Desktop folder
             this.folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
-
-            // Display the openFile dialog.
+            // Display the openFile dialog
             DialogResult result = folderBrowserDialog1.ShowDialog();
 
             // OK button was pressed.
             if (result == System.Windows.Forms.DialogResult.OK)
             {
+                // Make a search with parsed file names to OMDB-Database
+                // Returned object MovieData data contains property List<MovieData> Movies,
+                // which contains List of MovieData-objects serialized from JSON-response from OMDB
                 try
                 {
                     //System.Windows.MessageBox.Show(openFileName);
                     openFileName = folderBrowserDialog1.SelectedPath;
                     fileOpened = true;
-                    MovieList ml = new MovieList(openFileName, movieListBox);
-                    MovieData md = new MovieData(ml.movies);
+                    MovieList ml = new MovieList(openFileName);
+                    MovieData data = new MovieData(ml.movies, movieListBox);
+                    this.Data = data;
                 }
                 catch (Exception exp)
                 {
@@ -111,7 +119,25 @@ namespace MovieInfo
 
         private void movieListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            System.Console.WriteLine("asd");
+            MovieData md = (MovieData)movieListBox.SelectedItem;
+            movieNameLabel.Content = md.Title;
+            movieReleasedLabel.Content = md.Released + " (" + md.Runtime + ")";
+            movieGenreLabel.Content = md.Genre;
+            MoviePlotLabel.Text = md.Plot;
+            moviePoster.Source = new BitmapImage(new Uri(md.Poster, UriKind.Absolute));
+            movieDirectorLabel.Text = "Director: " + md.Director;
+            movieWritersLabel.Text = "Writers: " + md.Writer;
+            movieStarsLabel.Text = "Actors: " + md.Actors;
+
+            //Console.Write(md.Poster);
+
+            /*
+            foreach (MovieData md in this.Data.Movies)
+            {
+                Console.Write(md.Title);
+            }
+            */
         }
+        #endregion
     }
 }

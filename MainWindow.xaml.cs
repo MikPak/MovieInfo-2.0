@@ -4,6 +4,8 @@ using System.Net;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
+using System.Data.SQLite;
+using System.Collections.Generic;
 
 namespace MovieInfo
 {
@@ -25,9 +27,13 @@ namespace MovieInfo
         private FolderBrowserDialog folderBrowserDialog1;
         private bool fileOpened = false;
         private string openFileName;
+        private SQLiteConnection dbConnection;
+        private List<MovieData> movies = new List<MovieData>();
+        private string dbName = "movieInfo.sqlite";
 
         #region properties
         private MovieData Data { get; set; }
+        private SQLiteConnection db { get { return dbConnection; } set { dbConnection = value; } }
         #endregion
 
         #region constructors
@@ -35,6 +41,7 @@ namespace MovieInfo
         {
             InitializeComponent();
             AddMainMenu();
+            initDB();
         }
         #endregion
 
@@ -68,6 +75,65 @@ namespace MovieInfo
             exitToolTip.Content = "End the program";
         }
 
+        private void initDB()
+        {
+            if (!File.Exists(dbName))
+            {
+                SQLiteConnection.CreateFile(dbName);
+                this.db = new SQLiteConnection("Data Source=" + dbName + "; Version=3;");
+                this.db.Open();
+
+                string sql = "CREATE TABLE movieInfo (title varchar(100), year int, rated varchar(20), released TIMESTAMP, runtime varchar(20), genre varchar(150), director varchar(150), writer varchar(250), actors varchar(250), plot varchar(300), language varchar(50), country varchar(50), awards varchar(150), poster varchar(300), metascore varchar(20), imdbrating varchar(20), imdbvotes varchar(20), imdbid varchar(20), type varchar(20), response varchar(20), parsedName varchar(50))";
+                SQLiteCommand command = new SQLiteCommand(sql, this.db);
+                command.ExecuteNonQuery();
+            }
+            else
+            {
+                this.db = new SQLiteConnection("Data Source=" + dbName + "; Version=3;");
+                this.db.Open();
+
+                // Initialize ListBox with movies found from local DB
+                string selectSQL = "SELECT * FROM movieInfo";
+                SQLiteCommand command = new SQLiteCommand(selectSQL, db);
+                try
+                {
+                    using (SQLiteDataReader rdr = command.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            MovieData md = new MovieData();
+                            md.Title = rdr["title"].ToString();
+                            md.Year = rdr["year"].ToString();
+                            md.Rated = rdr["rated"].ToString();
+                            md.Runtime = rdr["runtime"].ToString();
+                            md.Genre = rdr["genre"].ToString();
+                            md.Director = rdr["director"].ToString();
+                            md.Writer = rdr["writer"].ToString();
+                            md.Actors = rdr["actors"].ToString();
+                            md.Plot = rdr["plot"].ToString();
+                            md.Language = rdr["language"].ToString();
+                            md.Country = rdr["country"].ToString();
+                            md.Awards = rdr["awards"].ToString();
+                            md.Poster = rdr["poster"].ToString();
+                            md.Metascore = rdr["metascore"].ToString();
+                            md.imdbRating = rdr["imdbrating"].ToString();
+                            md.imdbVotes = rdr["imdbvotes"].ToString();
+                            md.imdbID = rdr["imdbid"].ToString();
+                            md.Type = rdr["type"].ToString();
+                            md.Response = rdr["response"].ToString();
+
+                            movies.Add(md);
+                            movieListBox.Items.Add(md);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         private void openMenuItem_Click(object sender, RoutedEventArgs e)
         {
             // Create instance of FolderBrowserDialog
@@ -94,8 +160,7 @@ namespace MovieInfo
                     openFileName = folderBrowserDialog1.SelectedPath;
                     fileOpened = true;
                     MovieList ml = new MovieList(openFileName);
-                    MovieData data = new MovieData(ml.movies, movieListBox);
-                    this.Data = data;
+                    MovieData data = new MovieData(ml.movies, movieListBox, db, movies);
                 }
                 catch (Exception exp)
                 {

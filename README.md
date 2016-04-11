@@ -20,7 +20,7 @@ MovieInfo uses OMDB-API ( http://www.omdbapi.com/ ) for querying IMDB.
 
 #Docs
 [Activity Diagram](doc/Activity Diagram.activity.violet.html)
-[Use Case Diagram](UseCaseDiagram.ucase.violet.html)
+[Use Case Diagram](doc/UseCaseDiagram.ucase.violet.html)
 
 Author: Mikko Pakkanen
 Website: http://mikkopakkanen.com

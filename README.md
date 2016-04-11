@@ -7,14 +7,14 @@ Internet Movie Database (IMDB.com) and showing it in neat and simple GUI. You ca
 
 MovieInfo uses OMDB-API ( http://www.omdbapi.com/ ) for querying IMDB.
 
-#Features:
+#Features
 - Graphical user interface
 - User can specify folder location
 - Supports different file formats
 - Retrieves information from IMDB
 - File name parsing
 
-#TODO:
+#TODO
 - Improve file parsing
 - Improve GUI
 

@@ -2,7 +2,7 @@
 ------------------------
 ![MovieInfo Main View](doc/movieInfo.JPG)
 
-MovieInfo is a very simple movie-library tool for retrieving movie information from
+MovieInfo is a very simple movie-library tool written in C# for retrieving movie information from
 Internet Movie Database (IMDB.com) and showing it in neat and simple GUI. You can select folder which contains movies and program will try to look if it can find anything from Internet Movie Database.
 
 MovieInfo uses OMDB-API ( http://www.omdbapi.com/ ) for querying IMDB.

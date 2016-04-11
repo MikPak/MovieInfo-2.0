@@ -56,9 +56,11 @@ namespace MovieInfo
         public MovieData(List<string> filenames, System.Windows.Controls.ListBox listbox, SQLiteConnection db, List<MovieData> movies)
         {
             string url = "http://www.omdbapi.com/?t="; // See www.omdbapi.com/#parameters for full variable definition list
-
+            //int i = 0;
             foreach (string movie in filenames)
             {
+                //System.Console.WriteLine("#" + i + " " + movie);
+                //i++;
                 // First we want to check if there are rows in local database that already contain file with same parsed name..
                 string selectSQL = "SELECT * FROM movieInfo WHERE parsedName = '" + movie + "'";
                 SQLiteCommand command = new SQLiteCommand(selectSQL, db);
@@ -142,6 +144,7 @@ namespace MovieInfo
                     throw ex;
                 }
             }
+            listbox.Items.Clear();
             listbox.ItemsSource = movies; // Bind List<MovieData> as ItemsSource for our ListBox
             db.Close(); // Close database connection
         }

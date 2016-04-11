@@ -1,4 +1,4 @@
-#MovieInfo 2.0 - Simple movie-library tool
+#MovieInfo 2.0 - Simple movie library tool
 ------------------------
 ![MovieInfo Main View](doc/movieInfo.JPG)
 
@@ -14,9 +14,13 @@ MovieInfo uses OMDB-API ( http://www.omdbapi.com/ ) for querying IMDB.
 - Retrieves information from IMDB
 - File name parsing
 
-#TODO
+#Todo
 - Improve file parsing
 - Improve GUI
+
+#Docs
+[Activity Diagram](doc/Activity Diagram.activity.violet.html)
+[Use Case Diagram](UseCaseDiagram.ucase.violet.html)
 
 Author: Mikko Pakkanen
 Website: http://mikkopakkanen.com

@@ -1,5 +1,7 @@
 #MovieInfo v2.0 - Simple movie-library tool
 ------------------------
+![MovieInfo Main View](doc/movieInfo.JPG)
+
 MovieInfo is a very simple movie-library tool for retrieving movie information from
 Internet Movie Database (IMDB.com) and showing it in neat and simple GUI.
 

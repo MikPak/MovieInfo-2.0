@@ -21,11 +21,20 @@ System.Data.SQLite is used to save serialized objects to SQLite-Database.
 - File name parsing
 
 #Todo
-- Improve file parsing
-- Improve GUI
+* Improve file parsing
+  * Possibility to read movie metadata?
+  * Make file name parsing better
+* Improve GUI
+  * More options for user to choose
+  * More information to be displayed for the user
+  * Make GUI responsible, at the moment user can't resize the window
+* Add more functionality
+  * Let user play the movie from GUI by pressing a button (system default mediaplayer for example)
 
 #Docs
+* [Use Case Diagram](doc/useCaseDiagram.JPG)
+* [Activity Diagram](doc/activityDiagram.jpg)
 
-
-Author: Mikko Pakkanen
-Website: http://mikkopakkanen.com
+#Author
+* Mikko Pakkanen
+  * [mikkopakkanen.com](http://mikkopakkanen.com)

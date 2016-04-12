@@ -1,4 +1,4 @@
-#MovieInfo 2.0 - Simple movie library tool
+#MovieInfo - Simple movie library tool
 ------------------------
 ![MovieInfo Main View](doc/movieInfo.JPG)
 

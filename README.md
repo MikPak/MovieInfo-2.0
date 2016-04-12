@@ -31,4 +31,5 @@ System.Data.SQLite is used to save serialized objects to SQLite-Database.
 
 #Author
 Author: Mikko Pakkanen
+
 Website: [mikkopakkanen.com](http://mikkopakkanen.com)

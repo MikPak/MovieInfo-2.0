@@ -15,7 +15,7 @@ namespace MovieInfo
     *       - Parses file names
     *       - Searches for data from The Open Movie Database (omdbapi.com)
     *       - Parses XML-response and views info in graphical user interface
-    *       - Keeps record of data in local MySQL-database
+    *       - Keeps record of data in local SQLite-database
     *
     *       GitHub: https://github.com/MikPak/MovieInfo-2.0
     *       Project Started: 20.3.2016
@@ -53,6 +53,7 @@ namespace MovieInfo
             MovieInfoGrid.Children.Add(mainMenu);
             mainMenu.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
             mainMenu.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            mainMenu.Height = 20;
             // Make the File menu.
             System.Windows.Controls.MenuItem fileMenuItem = new System.Windows.Controls.MenuItem();
             fileMenuItem.Header = "_File";
@@ -101,6 +102,7 @@ namespace MovieInfo
                     {
                         while (rdr.Read())
                         {
+                            defaultViewLabel.Visibility = Visibility.Hidden; // Hide label at the middle of content
                             MovieData md = new MovieData();
                             md.Title = rdr["title"].ToString();
                             md.Year = rdr["year"].ToString();
@@ -156,6 +158,7 @@ namespace MovieInfo
                 // which contains List of MovieData-objects serialized from JSON-response from OMDB
                 try
                 {
+                    defaultViewLabel.Visibility = Visibility.Hidden; // Hide label at the middle of content
                     //System.Windows.MessageBox.Show(openFileName);
                     openFileName = folderBrowserDialog1.SelectedPath;
                     fileOpened = true;

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MovieInfo - Simple movie library tool" MinHeight="445" MinWidth="785" MaxWidth="785" MaxHeight="445">
     <Grid x:Name="MovieInfoGrid">
-        <ListBox x:Name="movieListBox" DataContext="{Binding}" DisplayMemberPath="Title" SelectionChanged="movieListBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Stretch" Width="245"/>
+        <ListBox x:Name="movieListBox" DataContext="{Binding}" DisplayMemberPath="Title" SelectionChanged="movieListBox_SelectionChanged" HorizontalAlignment="Left" Margin="0,19,0,0" VerticalAlignment="Stretch" Width="245" BorderThickness="0,0,1,0"/>
         <Label x:Name="movieNameLabel" Content="" HorizontalAlignment="Left" Height="40" Margin="261,22,0,0" VerticalAlignment="Top" Width="241" FontSize="21.333" FontFamily="Segoe UI Semilight"/>
         <Label x:Name="movieReleasedLabel" Content="" HorizontalAlignment="Left" Height="36" Margin="261,57,0,0" VerticalAlignment="Top" Width="241" FontSize="16" FontFamily="Segoe UI Semilight" RenderTransformOrigin="0.505,0.593"/>
         <Label x:Name="movieGenreLabel" Content="" HorizontalAlignment="Left" Height="36" Margin="261,80,0,0" VerticalAlignment="Top" Width="241" FontSize="16" FontFamily="Segoe UI Semilight" RenderTransformOrigin="0.505,0.593"/>
@@ -16,5 +16,6 @@
         <TextBlock x:Name="movieWritersLabel" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" Margin="261,255,0,0" VerticalAlignment="Top" Width="241"/>
         <TextBlock x:Name="movieStarsLabel" HorizontalAlignment="Left" Margin="261,320,0,0" VerticalAlignment="Top" Width="241"/>
         <Image x:Name="moviePoster" HorizontalAlignment="Right" Width="auto" Height="auto" Margin="507,22,-15.6,0" VerticalAlignment="Top"/>
+        <Label x:Name="defaultViewLabel" Content="Start by selecting a folder.." HorizontalAlignment="Center" Margin="374,186,140.6,0" Width="247" VerticalAlignment="Top" Opacity="0.7" Background="White" Foreground="#FF565656" FontSize="18.667"/>
     </Grid>
 </Window>

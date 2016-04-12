@@ -48,9 +48,8 @@ namespace MovieInfo
         #endregion
         #region constructors
         /* 
-        * public MovieData(List<string> filenames)
-        * - Makes HTTP-requests to OMDB, given List should contain List of parsed movie names
-        * - Initializes default view when starting the app.
+        * public MovieData(List<string> filenames, System.Windows.Controls.ListBox listbox, SQLiteConnection db, List<MovieData> movies)
+        * - Makes HTTP-requests to OMDB, first parameter should contain List of parsed movie names as strings
         * - Converts JSON-response to .NET-object (http://www.newtonsoft.com/json/help/html/SerializingJSON.htm)
         */
         public MovieData(List<string> filenames, System.Windows.Controls.ListBox listbox, SQLiteConnection db, List<MovieData> movies)

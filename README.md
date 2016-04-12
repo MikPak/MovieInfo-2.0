@@ -32,6 +32,9 @@ Internet Movie Database (IMDB.com) and showing it in a simple GUI. You can pass 
   * Let user play the movie from GUI by pressing a button (system default mediaplayer for example)
 
 #Docs
+###Final report for the C#-course
+* [loppuraportti.txt](doc/loppuraportti.txt)
+
 ###Files
 * [Use Case Diagram](doc/useCaseDiagram.JPG)
 * [Activity Diagram](doc/activityDiagram.jpg)

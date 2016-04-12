@@ -1,6 +1,6 @@
 #MovieInfo - Simple movie library tool
 ------------------------
-![MovieInfo Main View](doc/movieInfo.JPG)
+![MovieInfo Main View](doc/movieInfo.jpg)
 
 
 #Specification

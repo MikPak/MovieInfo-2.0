@@ -24,7 +24,7 @@ Internet Movie Database (IMDB.com) and showing it in a simple GUI. You can pass 
   * Possibility to read movie metadata?
   * Make file name parsing better
 * Improve GUI
-  * More options for user to choose *(for ex. let user choose what information will be displayed in the views)
+  * More options for user to choose *(for ex. let user choose what information will be displayed in the views)*
   * Let user edit movie related data in local DB
   * More information to be displayed for the user (currently showing only the most important things about the movie like name, title, plot, duration, directors, writers, actors..)
   * Make GUI responsible, at the moment user can't resize the window

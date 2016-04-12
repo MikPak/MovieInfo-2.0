@@ -31,16 +31,16 @@ Internet Movie Database (IMDB.com) and showing it in a simple GUI. You can selec
   * Let user play the movie from GUI by pressing a button (system default mediaplayer for example)
 
 #Docs
-##Files
+###Files
 * [Use Case Diagram](doc/useCaseDiagram.JPG)
 * [Activity Diagram](doc/activityDiagram.jpg)
 
-##System requirements
+###System requirements
 * **Operating system:** Microsoft Windows
 * **Frameworks:** .NET Framework 4.5.2 or newer
 * Original project is written in Microsoft Visual Studio Community 2015, Update 1
 
-## Installation
+###Installation
 * Git clone files to your local repo and make a new project in Visual Studio
 * test-folder contains some data to test program with
 * On first startup of the program, local database *(movieInfo.sqlite)* will be generated to the same folder where program is

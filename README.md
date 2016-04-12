@@ -16,7 +16,6 @@ System.Data.SQLite is used to save serialized objects to SQLite-Database.
 - Graphical user interface
 - Supported file formats (.avi, .mp4, .iso, .img)
 - User can specify folder location
-- Supports different file formats
 - Retrieves information from IMDB
 - File name parsing
 

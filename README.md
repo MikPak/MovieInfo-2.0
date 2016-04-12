@@ -9,6 +9,7 @@ Internet Movie Database (IMDB.com) and showing it in a simple GUI. You can selec
 
 MovieInfo uses OMDB-API ( http://www.omdbapi.com/ ) for querying IMDB.
 [JSON.NET-Framework](http://www.newtonsoft.com/json) is used to serialize JSON-response to .NET-object.
+
 System.Data.SQLite is used to save serialized objects to SQLite-Database.
 
 #Features

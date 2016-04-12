@@ -1,6 +1,6 @@
 ##############################
-##		MovieInfo			##
-## 		Final Report		##
+##	MovieInfo	    ##
+##	Final Report	    ##
 ##############################
 
 #1. Installation

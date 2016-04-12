@@ -32,11 +32,9 @@ System.Data.SQLite is used to save serialized objects to SQLite-Database.
   * Let user play the movie from GUI by pressing a button (system default mediaplayer for example)
 
 #Docs
-[Use Case Diagram](doc/useCaseDiagram.JPG)
-
-[Activity Diagram](doc/activityDiagram.jpg)
+*[Use Case Diagram](doc/useCaseDiagram.JPG)
+*[Activity Diagram](doc/activityDiagram.jpg)
 
 #Author
-Mikko Pakkanen
-
-[mikkopakkanen.com](http://mikkopakkanen.com)
+*Mikko Pakkanen
+ *[mikkopakkanen.com](http://mikkopakkanen.com)

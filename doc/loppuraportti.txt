@@ -1,0 +1,65 @@
+##############################
+##		MovieInfo			##
+## 		Final Report		##
+##############################
+
+#1. Installation
+	- Operating system: Microsoft Windows
+	- Frameworks: .NET Framework 4.5.2 or newer
+	- Original project is written in Microsoft Visual Studio Community 2015, Update 1
+	- Git clone files to your local repo and make a new project in Visual Studio
+	- test-folder contains some data to test program with
+
+#2. Specification
+	## Purpose
+		- MovieInfo is a simple movie library tool written in C# for retrieving movie information from Internet Movie Database (IMDB.com) and showing it in a simple GUI. You can pass it a folder which contains movie files and program tries to search if it can find anything about them from the Internet Movie Database.
+	
+	## Complete functionalities of the program
+		- Search movie-files (.iso, .mp4, .avi, .img) from user specified location
+		- Parse file names to be "human-readable" as well as possible
+		- Query OMDB and see if any data can be found
+		- Serialize and store objects to local SQLite-database
+	
+	## Incomplete functionalities of the program
+		- Make GUI better
+		- Add more options for the user to play with
+		- Add more file formats
+		- Improve file name parsing
+		- More features 
+			- Give user possibility to choose what data is displayed about the movie
+			- Let user edit movie data in local database
+			- Add functionality to play movie files by pressing button in the GUI (system default mediaplayer)
+	
+#3. Sreenshots
+	## Main view of the MovieInfo, see doc/movieInfo.jpg
+	
+#4. Files required by the program
+	## SQLite-database will be generated on the first launch of a program (it will be generated on the same folder as program is)
+	
+#5. Known bugs and things for the future development
+	## Changing movie in the ListBox very fastly causes movie posters not to load correctly
+	## Things to do in future; see chapter #2 -> Incomplete functionalities of the program
+
+#6. Time schedule
+	## Project Started: 20.3.2016
+	## Used hours: 25 hours
+	
+#7. Analysis
+	## 	In general it was great to work with this project. 
+		First time I wrote MovieInfo in Java-course in first academic year and now for the second time.
+		I'm glad of the program I've written and I hope I can continue making it better in the future.
+		
+	## Learned things:
+		- C# in general
+		- How to serialize JSON-response
+		- Serialize/deserialize objects from database
+		- Working with Git
+		- Using Visual Studio 2015
+		- Searching for information (stackoverflow, different forums)
+		- Writing GitHub description (readme.md)
+	## Most challenging things:
+		- Parsing file names (regex)
+		
+#8. Authors and suggestion of points for the project
+	## Author: H8699 / Mikko Pakkanen (mikkopakkanen.com)
+	## Points: 30 points

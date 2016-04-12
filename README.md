@@ -37,9 +37,9 @@ System.Data.SQLite is used to save serialized objects to SQLite-Database.
 * [Activity Diagram](doc/activityDiagram.jpg)
 
 ##System requirements
-**Operating system:** Microsoft Windows
-**Frameworks:** .NET Framework 4.5.2 or newer
-Original project is written in Microsoft Visual Studio Community 2015, Update 1
+* **Operating system:** Microsoft Windows
+* **Frameworks:** .NET Framework 4.5.2 or newer
+* Original project is written in Microsoft Visual Studio Community 2015, Update 1
 
 #Author
 * Mikko Pakkanen

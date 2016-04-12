@@ -13,11 +13,12 @@ MovieInfo uses OMDB-API ( http://www.omdbapi.com/ ) for querying IMDB.
 System.Data.SQLite is used to save serialized objects to SQLite-Database.
 
 #Features
-- Graphical user interface
-- Supported file formats (.avi, .mp4, .iso, .img)
-- User can specify folder location
-- Retrieves information from IMDB
-- File name parsing
+* Graphical user interface
+* Supported file formats (.avi, .mp4, .iso, .img)
+* User can specify folder location
+* Retrieves information from IMDB
+  * Save information to local SQLite database
+* File name parsing
 
 #Todo
 * Improve file parsing
